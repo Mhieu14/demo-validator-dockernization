@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+
+  oraichain-node:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: oraichain-node
+    container_name: oraichain-node
+    restart: always
+    ports:
+      - 1317:1317
+      - 9090:9090
+      - 9091:9091
+      - 26656:26656
+      - 26657:26657
+    volumes:
+      - ./:/workspace

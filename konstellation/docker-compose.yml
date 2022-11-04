@@ -24,9 +24,9 @@ services:
       cd /workspace/.knstld 
       && /bin/knstld version
       && /bin/knstld init ${NODE_MONIKER} --home ./ --chain-id=darchub -o 
-      && wget -O ./config/genesis.json ${GENESIS_JSON_URL}
-      && wget -O ./config/config.toml ${CONFIG_TOML_URL}
+      && cp /config/genesis.json /workspace/.knstld/config/genesis.json
+      && cp /config/config.toml /workspace/.knstld/config/config.toml
       && sed -i -e '/moniker =/ s/= .*/= \"${NODE_MONIKER}\"/' /workspace/.knstld/config/config.toml
-      && toml-cli set config/app.toml api.enable true 
+      && sed -i '/\[grpc\]/{:a;n;/enabled/s/false/true/;Ta};/\[api\]/{:a;n;/enable/s/false/true/;Ta;}' /workspace/.knstld/config/app.toml
       && DAEMON_NAME=knstld DAEMON_HOME=/workspace/.knstld DAEMON_RESTART_AFTER_UPGRADE=true DAEMON_ALLOW_DOWNLOAD_BINARIES=true  cosmovisor run start --home ./
       "

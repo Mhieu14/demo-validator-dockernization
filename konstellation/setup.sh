@@ -58,3 +58,6 @@ mkdir -p $NODE_HOME/cosmovisor/genesis/bin
 mkdir -p $NODE_HOME/cosmovisor/upgrades
 
 cp /bin/$BINARY $NODE_HOME/cosmovisor/genesis/bin
+
+
+go install github.com/MinseokOh/toml-cli@latest

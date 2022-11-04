@@ -1,0 +1,1 @@
+echo "Start Oraichain full node"

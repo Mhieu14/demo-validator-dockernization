@@ -1,0 +1,32 @@
+version: '3.6'
+
+services:
+
+  konstellation-node:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: konstellation-node
+    container_name: konstellation-node
+    restart: always
+    ports:
+      - 1317:1317
+      - 9090:9090
+      - 9091:9091
+      - 26656:26656
+      - 26657:26657
+    volumes:
+      - ./config:/workspace/.knstld/config
+      - /mnt/${VOLUME_NAME}/knstl-sentry/.knstld/data:/workspace/.knstld/data
+      - /mnt/${VOLUME_NAME}/knstl-sentry/.knstld/wasm:/workspace/.knstld/wasm
+    command: >
+      bash -c "
+      cd /workspace/.knstld 
+      && /bin/knstld version
+      && /bin/knstld init ${NODE_MONIKER} --home ./ --chain-id=darchub -o 
+      && wget -O ./config/genesis.json ${GENESIS_JSON_URL}
+      && wget -O ./config/config.toml ${CONFIG_TOML_URL}
+      && sed -i -e '/moniker =/ s/= .*/= \"${NODE_MONIKER}\"/' /workspace/.knstld/config/config.toml
+      && sed -i -e '/enable =/ s/= .*/= true/' /workspace/.knstld/config/app.toml
+      && DAEMON_NAME=knstld DAEMON_HOME=/workspace/.knstld DAEMON_RESTART_AFTER_UPGRADE=true DAEMON_ALLOW_DOWNLOAD_BINARIES=true  cosmovisor run start --home ./
+      "

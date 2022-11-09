@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ##### CONFIGURATION ###
 export CURRENT_FOLDER=$(pwd)
 export NODE_HOME=/workspace/.knstld

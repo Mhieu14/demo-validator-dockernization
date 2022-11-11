@@ -23,7 +23,7 @@ services:
       bash -c "
       cd /workspace/.knstld 
       && /bin/knstld version
-      && /bin/knstld init ${NODE_MONIKER} --home ./ --chain-id=darchub -o 
+      && /bin/knstld init '${NODE_MONIKER}' --home ./ --chain-id=darchub -o 
       && cp /config/genesis.json /workspace/.knstld/config/genesis.json
       && cp /config/config.toml /workspace/.knstld/config/config.toml
       && sed -i -e '/moniker =/ s/= .*/= \"${NODE_MONIKER}\"/' /workspace/.knstld/config/config.toml

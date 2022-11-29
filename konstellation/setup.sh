@@ -18,7 +18,7 @@ apt-get install -y make gcc
 
 
 echo "Getting konstellation..."
-git clone -b v0.5.0 https://github.com/konstellation/konstellation
+git clone -b v0.6.0 https://github.com/konstellation/konstellation
 
 echo "cd into konstellation..."
 cd konstellation
@@ -59,9 +59,9 @@ mkdir -p $NODE_HOME
 mkdir -p $NODE_HOME/cosmovisor
 mkdir -p $NODE_HOME/cosmovisor/genesis
 mkdir -p $NODE_HOME/cosmovisor/genesis/bin
-mkdir -p $NODE_HOME/cosmovisor/upgrades
+mkdir -p $NODE_HOME/cosmovisor/upgrades/v0.45/bin
 
-cp /bin/$BINARY $NODE_HOME/cosmovisor/genesis/bin
+cp /bin/$BINARY $NODE_HOME/cosmovisor/genesis/v0.45/bin
 
 
 go install github.com/MinseokOh/toml-cli@latest

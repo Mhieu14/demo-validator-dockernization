@@ -27,6 +27,7 @@ services:
       && cp /config/genesis.json /workspace/.knstld/config/genesis.json
       && cp /config/config.toml /workspace/.knstld/config/config.toml
       && sed -i -e '/moniker =/ s/= .*/= \"${NODE_MONIKER}\"/' /workspace/.knstld/config/config.toml
-      && sed -i '/\[grpc\]/{:a;n;/enabled/s/false/true/;Ta};/\[api\]/{:a;n;/enable/s/false/true/;Ta;};/\[rosetta\]/{:a;n;/enable/s/true/false/;Ta;}' /workspace/.knstld/config/app.toml
+      && sed -i '/\[instrumentation\]/{:a;n;/prometheus/s/false/true/;Ta}' /workspace/.knstld/config/config.toml
+      && sed -i '/\[grpc\]/,+3 s/enable = false/enable = true/;/\[api\]/,+3 s/enable = false/enable = true/;/\[rosetta\]/,+3 s/enable = true/enable = true/' /workspace/.knstld/config/app.toml
       && DAEMON_NAME=knstld DAEMON_HOME=/workspace/.knstld DAEMON_RESTART_AFTER_UPGRADE=true DAEMON_ALLOW_DOWNLOAD_BINARIES=true  cosmovisor run start --home ./
       "

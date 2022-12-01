@@ -1,0 +1,1 @@
+tar cfJ konstellation.tar.xz ./konstellation/

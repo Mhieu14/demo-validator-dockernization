@@ -29,6 +29,6 @@ services:
       && sed -i -e '/moniker =/ s/= .*/= \"${NODE_MONIKER}\"/' /workspace/.knstld/config/config.toml
       && sed -i '/\[instrumentation\]/{:a;n;/prometheus/s/false/true/;Ta}' /workspace/.knstld/config/config.toml
       && sed -i 's/pruning = \x22default\x22/pruning = \x22nothing\x22/' /workspace/.knstld/config/app.toml
-      && sed -i '/\[grpc\]/,+3 s/enable = false/enable = true/;/\[api\]/,+3 s/enable = false/enable = true/;/\[rosetta\]/,+3 s/enable = true/enable = true/' /workspace/.knstld/config/app.toml
+      && sed -i '/\[grpc\]/,+3 s/enable = false/enable = true/;/\[api\]/,+3 s/enable = false/enable = true/;/\[rosetta\]/,+3 s/enable = true/enable = false/' /workspace/.knstld/config/app.toml
       && /bin/knstld start --home ./
       "

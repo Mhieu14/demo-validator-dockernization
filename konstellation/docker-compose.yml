@@ -15,6 +15,7 @@ services:
       - 9091:9091
       - 26656:26656
       - 26657:26657
+      - 26660:26660
     volumes:
       - ./config:/workspace/.knstld/config
       - /mnt/${VOLUME_NAME}/knstl-sentry/.knstld/data:/workspace/.knstld/data

@@ -21,6 +21,8 @@ services:
       - /mnt/${VOLUME_NAME}/knstl-sentry/.knstld/wasm:/workspace/.knstld/wasm
     command: >
       bash -c "
-      cd /workspace/.knstld
+      [ ! -f "/workspace/.knstld/config/genesis.json" ] && cp /default_config/config/* /workspace/.knstld/config/ || :
+      && sed -i -e '/moniker =/ s/= .*/= \"${NODE_MONIKER}\"/' /workspace/.knstld/config/config.toml
+      && cd /workspace/.knstld
       && /bin/knstld start --home ./
       "

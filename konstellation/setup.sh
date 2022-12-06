@@ -65,5 +65,6 @@ rm -r -f /default_config/data/
 wget -O /default_config/config/genesis.json ${GENESIS_JSON_URL}
 sed -i '/\[instrumentation\]/{:a;n;/prometheus/s/false/true/;Ta}' /default_config/config/config.toml
 sed -i 's/pruning = \x22default\x22/pruning = \x22nothing\x22/' /default_config/config/app.toml
+sed -i '/\[rpc\]/,+3 s/laddr = \"tcp:\/\/127.0.0.1:26657\"/laddr = \"tcp:\/\/0.0.0.0:26657\"/' /default_config/config/config.toml
 sed -i '/\[grpc\]/,+3 s/enable = false/enable = true/;/\[api\]/,+3 s/enable = false/enable = true/;/\[rosetta\]/,+3 s/enable = true/enable = false/' /default_config/config/app.toml
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PERSISTENT_PEERS\"/" /default_config/config/config.toml

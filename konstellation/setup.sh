@@ -15,7 +15,7 @@ echo "Getting essentials..."
 apt-get install -y make gcc
 
 echo "Getting konstellation..."
-git clone -b v0.6.0 https://github.com/konstellation/konstellation
+git clone -b v0.6.2 https://github.com/konstellation/konstellation
 
 echo "cd into konstellation..."
 cd konstellation

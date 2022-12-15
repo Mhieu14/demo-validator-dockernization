@@ -1,0 +1,29 @@
+version: '3.6'
+
+services:
+
+  vchain-test-node:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: vchain-test-node
+    container_name: vchain-test-node
+    restart: always
+    ports:
+      - 1317:1317
+      - 9090:9090
+      - 9091:9091
+      - 26656:26656
+      - 26657:26657
+      - 26660:26660
+    volumes:
+      - ./config:/workspace/.gaiad/config
+      - /mnt/${VOLUME_NAME}/.vchaintest/data:/workspace/.gaiad/data
+      - /mnt/${VOLUME_NAME}/.vchaintest/wasm:/workspace/.gaiad/wasm
+    command: >
+      bash -c "
+      [ ! -f "/workspace/.gaiad/config/genesis.json" ] && cp /default_config/config/* /workspace/.gaiad/config/ || :
+      && sed -i -e '/moniker =/ s/= .*/= \"${NODE_MONIKER}\"/' /workspace/.gaiad/config/config.toml
+      && cd /workspace/.gaiad
+      && /bin/gaiad start --home ./
+      "

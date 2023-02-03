@@ -7,7 +7,7 @@ export CHAIN_ID=darchub
 export NODE_MONIKER="test-vchain"
 export BINARY=gaiad
 export PERSISTENT_PEERS="ee69b94360cfda839efaada66cc1d7fbf6024e7a@167.172.85.52:26656"
-export GENESIS_JSON_URL=https://doc-04-1g-docs.googleusercontent.com/docs/securesc/b1m9ji821vhpv8ef9vtcgprl1ep87mpi/frs025muhea9r1kc1d56q386nl5spj3i/1675411425000/02989078898932167687/02989078898932167687/1nQGPlCGgXpNC-5B1F04OZkiJBu0JwcHE
+export GENESIS_JSON_URL=https://cdn.discordapp.com/attachments/1070984305003728906/1070984356874702869/genesis.json
 echo "Updating apt-get..."
 apt-get update -y
 

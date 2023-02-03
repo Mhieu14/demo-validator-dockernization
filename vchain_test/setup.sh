@@ -6,8 +6,8 @@ export NODE_HOME=/workspace/.gaiad
 export CHAIN_ID=darchub
 export NODE_MONIKER="test-vchain"
 export BINARY=gaiad
-export PERSISTENT_PEERS="72657db763389d166a671acf73a2815f091e5ac2@159.223.35.6:27013"
-export GENESIS_JSON_URL=https://cdn.discordapp.com/attachments/1025335421607104522/1052894817887191080/genesis.json
+export PERSISTENT_PEERS="ee69b94360cfda839efaada66cc1d7fbf6024e7a@167.172.85.52:26656"
+export GENESIS_JSON_URL=https://doc-04-1g-docs.googleusercontent.com/docs/securesc/b1m9ji821vhpv8ef9vtcgprl1ep87mpi/frs025muhea9r1kc1d56q386nl5spj3i/1675411425000/02989078898932167687/02989078898932167687/1nQGPlCGgXpNC-5B1F04OZkiJBu0JwcHE
 echo "Updating apt-get..."
 apt-get update -y
 
